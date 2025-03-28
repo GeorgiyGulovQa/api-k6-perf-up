@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
-import { baseUrl, loginAndGetAuthDetails, projectId, companyId } from '../utils/helper.js';
-
+import { baseUrl, loginAndGetAuthDetailsAdm2, project1Id, companyId, pole2ID } from '../utils/helper.js';
+import { pole2Data } from '../utils/helper_pole2_data.js';
 
 export const options = {
   vus: 5,
@@ -9,7 +9,7 @@ export const options = {
 };
 
 export default function () {
-  const {token} = loginAndGetAuthDetails();
+  const {token} = loginAndGetAuthDetailsAdm2();
 
   const authHeaders = {
     headers: {
@@ -25,19 +25,35 @@ console.log(companyId);
     { endpoint: '/profile', expectedStatus: 200 },
     { endpoint: '/notification', expectedStatus: 200 },
     { endpoint: '/project?page=1&per_page=-1', expectedStatus: 200 },
-    { endpoint: `/project/${projectId}`, expectedStatus: 200}
+    { endpoint: `/project/${project1Id}`, expectedStatus: 200}
   ];
 
   // Loop through endpoints and check response codes explicitly
   apiEndpoints.forEach(({ endpoint, expectedStatus }) => {
-    const res = http.get(`${baseUrl}${endpoint}`, authHeaders);
+    const res1 = http.get(`${baseUrl}${endpoint}`, authHeaders);
 
-    check(res, {
+    check(res1, {
       [`Endpoint ${endpoint} returns status ${expectedStatus}`]: (r) => r.status === expectedStatus,
     });
 
-    console.log(`✅ Requested ${endpoint}: received ${res.status}`);
+    console.log(`✅ Requested ${endpoint}: received ${res1.status}`);
 
     sleep(1);
   });
-}
+
+  const updateRes = http.put(
+    `${baseUrl}/pole/${pole2ID}`, 
+    JSON.stringify(pole2Data), 
+    { headers: authHeaders.headers }
+  );
+
+check(updateRes, {
+  'Pole updated successfully': (r) => r.status === 200 || r.status === 204,
+});
+
+console.log(`Pole update status: ${updateRes.status}`);
+console.log(`Pole update response: ${updateRes.body}`);
+
+sleep(1);
+};
+
