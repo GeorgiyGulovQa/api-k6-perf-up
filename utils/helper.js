@@ -7,10 +7,10 @@ export const passwordAdm1 = 'Helloadm1';
 export const emailAdm2 = 'g.gulov+adm2@gmail.com';
 export const passwordAdm2 = 'Hello111';
 export const companyId = '9b45259c-fca2-41da-a67f-400636bc215c';
-export const project1Id = '9e8a5f3f-03e5-45ea-b575-8fe9a218f6ed';
-export const project2Id = '9e8a2e54-a555-41c3-a81d-9f532df8e529';
-export const pole1ID = '9e8a4650-18f5-4326-a923-5ceab09e3c61';
-export const pole2ID = '9e8a6dae-2738-482b-b561-d987c542caf8';
+export const project1Id = '9e8a2e54-a555-41c3-a81d-9f532df8e529';
+export const project2Id = '9e928b54-f9c5-49f3-8ae9-872ab599502e';
+export const pole1ID = '9e928a45-bd2c-47db-91eb-bcd0964e00d2';
+export const pole2ID = '9e928b96-9af6-4278-8fd3-877eb83efd66';
 
 export function loginAndGetAuthDetailsAdm1() {
     const loginPayload = JSON.stringify({
