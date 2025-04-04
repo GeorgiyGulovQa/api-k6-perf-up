@@ -25,7 +25,8 @@ console.log(companyId);
     { endpoint: '/profile', expectedStatus: 200 },
     { endpoint: '/notification', expectedStatus: 200 },
     { endpoint: '/project?page=1&per_page=-1', expectedStatus: 200 },
-    { endpoint: `/project/${project1Id}`, expectedStatus: 200}
+    { endpoint: `/project/${project1Id}`, expectedStatus: 200},
+    { endpoint: `/pole/${pole2ID}`, expectedStatus: 200},
   ];
 
   // Loop through endpoints and check response codes explicitly
@@ -37,8 +38,11 @@ console.log(companyId);
     });
 
     console.log(`✅ Requested ${endpoint}: received ${res1.status}`);
-
-    sleep(1);
+    console.log(`Request duration ${endpoint} (total): ${res1.timings.duration} ms`);
+    /*console.log(`Request sending: ${res1.timings.sending} ms`);
+    console.log(`Waiting for response: ${res1.timings.waiting} ms`);
+    console.log(`Response receiving: ${res1.timings.receiving} ms`);
+    sleep(1);*/
   });
 
   const updateRes = http.put(
@@ -50,10 +54,13 @@ console.log(companyId);
 check(updateRes, {
   'Pole updated successfully': (r) => r.status === 200 || r.status === 204,
 });
-
+console.log(`Request duration Pole update (total): ${updateRes.timings.duration} ms`);
+/*console.log(`Request sending: ${updateRes.timings.sending} ms`);
+console.log(`Waiting for response: ${updateRes.timings.waiting} ms`);
+console.log(`Response receiving: ${updateRes.timings.receiving} ms`);*/
 console.log(`Pole update status: ${updateRes.status}`);
-console.log(`Pole update response: ${updateRes.body}`);
+//console.log(`Pole update response: ${updateRes.body}`);
 
-sleep(1);
+//sleep(1);
 };
 

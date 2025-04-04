@@ -4,7 +4,7 @@ import { baseUrl, loginAndGetAuthDetailsAdm1, companyId, project1Id } from '../u
 
 export const options = {
   vus: 1,           // ✅ Single VU
-  iterations: 1000, // Give it room
+  iterations: 3, // Give it room
 };
 
 export default function () {

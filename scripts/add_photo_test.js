@@ -11,7 +11,7 @@ import {
 
 export const options = {
   vus: 10,
-  duration: '120s',
+  duration: '30s',
 };
 
 function uuidV4() {
@@ -113,9 +113,10 @@ const data2 =  { ...data1, id: uuidV4() }; // ✅ Unique ID for pole2
 
   console.log(`📸 Pole1 response status: ${res1.status}`);
   console.log(`📸 Pole2 response status: ${res2.status}`);
+  console.log(`Request duration (total): ${res1.timings.duration} ms`);
+  console.log(`Request duration (total): ${res2.timings.duration} ms`);
+  //console.log(`📸 Pole1 response body: ${res1.body}`);
+  //console.log(`📸 Pole2 response body: ${res2.body}`);
 
-  console.log(`📸 Pole1 response body: ${res1.body}`);
-  console.log(`📸 Pole2 response body: ${res2.body}`);
-
-  sleep(1);
+  //sleep(1);
 }
