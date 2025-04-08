@@ -4,8 +4,8 @@ import { baseUrl, loginAndGetAuthDetailsAdm2, project1Id, companyId, pole2ID } f
 import { pole2Data } from '../utils/helper_pole2_data.js';
 
 export const options = {
-  vus: 5,
-  duration: '10s',
+  vus: 10,
+  duration: '600s',
 };
 
 export default function () {

@@ -10,8 +10,8 @@ import {
 } from '../utils/helper.js';
 
 export const options = {
-  vus: 10,
-  duration: '30s',
+  vus: 2,
+  duration: '600s',
 };
 
 function uuidV4() {
